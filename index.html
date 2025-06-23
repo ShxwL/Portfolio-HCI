@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Racing Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+/* Force skill bars to show immediately */
+.skill-progress[data-width="95%"] {
+    width:95% !important;
+}
+.skill-progress[data-width="90%"] {
+    width: 90% !important;
+}
+.skill-progress[data-width="85%"] {
+    width: 85% !important;
+}
+.skill-progress[data-width="70%"] {
+    width: 70% !important;
+}
+.skill-progress[data-width="65%"] {
+    width: 65% !important;
+}
+.skill-progress[data-width="60%"] {
+    width: 60% !important;
+}
+</style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop id="ferrari-bg-video">
+        <source src="ferrari.bg.1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- Racing Track Background -->
+    <div class="racing-track"></div>
+    
+
+    <!-- Racing finish line -->
+    <div class="finish-line"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">MY</span>
+                <span class="logo-accent">PORTFOLIO</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="checkered-flag-hero"></div>
+            <h1 class="hero-title">
+                <span class="title-line-1">SHALMIHAD</span>
+                <span class="title-line-2">SAHADI</span>
+            </h1>
+            <p class="hero-subtitle">I'm Shalmihad Bin Sahadi (B032410805), a computer networking student who studied a Major Networking Course and Real Device Simulation</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">About Me!</a>
+            </div>
+        </div>
+        <div class="speed-lines"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me!</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>A 22 years old who currently pursuing a Bachelor Degree Of Computer Science (Computer Networking) at Universiti Teknikal Malaysia Melaka (UTeM). </p>
+                    <p>My field of study primarily focuses on <b>IT Network System Administration (ITNSA),</b> covering
+                        areas such as <b>Network configuration, Server Administrator.</b> I also have some experiences
+                        in software-related fields such as <b>Machine Learning Activities (AI), Website Development and
+                            C/C++ Programming Competition</b></p>
+                    <p><b>Recipient of special awards for academic and co-curricular excellence during diploma
+                            convocation</b></p>
+                    <div class="stats">
+    <div class="stat">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Projects Completed</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">3+</span>
+        <span class="stat-label">Years Experience</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">8</span>
+        <span class="stat-label">Achievement</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">6</span>
+        <span class="stat-label">Dean Lists</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">2</span>
+        <span class="stat-label">Star Student Awards</span>
+    </div>
+</div>
+                </div>
+                <div class="about-image">
+                    <div class="driver-helmet"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Specifications</h2>
+            <div class="skills-grid">
+    <div class="skill-card">
+        <div class="skill-icon">💼</div>
+        <h3>Microsoft Word</h3>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="90%"></div>
+        </div>
+        <p>Document creation and formatting</p>
+        <span class="skill-level proficient">Proficient</span>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <h3>Microsoft PowerPoint</h3>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="90%"></div>
+        </div>
+        <p>Presentation design and delivery</p>
+        <span class="skill-level proficient">Proficient</span>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🌐</div>
+        <h3>Cisco Packet Tracer</h3>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="95%"></div>
+        </div>
+        <p>Network simulation and configuration</p>
+        <span class="skill-level proficient">Proficient</span>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🔧</div>
+        <h3>Putty</h3>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="85%"></div>
+        </div>
+        <p>SSH client and terminal emulation</p>
+        <span class="skill-level proficient">Proficient</span>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">💻</div>
+        <h3>VM Ware</h3>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="85%"></div>
+        </div>
+        <p>Virtual machine management</p>
+        <span class="skill-level proficient">Proficient</span>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🐧</div>
+        <h3>Linux</h3>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="95%"></div>
+        </div>
+        <p>Linux administration and commands</p>
+        <span class="skill-level proficient">Proficient</span>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">📋</div>
+        <h3>Microsoft Project</h3>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="60%"></div>
+        </div>
+        <p>Project planning and management</p>
+        <span class="skill-level basic">Basic</span>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">⚡</div>
+        <h3>Arduino IDE</h3>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="65%"></div>
+        </div>
+        <p>Microcontroller programming</p>
+        <span class="skill-level basic">Basic</span>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <h3>Xampp</h3>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="70%"></div>
+        </div>
+        <p>Local web development environment</p>
+        <span class="skill-level basic">Basic</span>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Achievements & Activities</h2>
+            <div class="projects-grid">
+
+    <div class="project-card">
+        <div class="project-image">
+            <img src="award.jpeg" alt="SPECIAL AWARD FOR ACADEMIC AND CO-CURRICULAR EXCELLENCE" style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px 15px 0 0; background: rgba(45, 45, 45, 0.8);">
+        </div>
+        <div class="project-info">
+            <h3>SPECIAL AWARD FOR ACADEMIC AND CO-CURRICULAR EXCELLENCE</h3>
+            <p>Recognition for exceptional academic and co-curricular performance</p>
+            <div class="project-tech">
+                <span>Excellence</span>
+                <span>Leadership</span>
+                <span>Achievement</span>
+            </div>
+        </div>
+    </div>
+    <div class="project-card">
+        <div class="project-image">
+            <img src="fyp.poli.jpeg" alt="INNOVATION AND COMMUNICATION COMPETITION" style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px 15px 0 0; background: rgba(45, 45, 45, 0.8);">
+        </div>
+        <div class="project-info">
+            <h3>INNOVATION AND COMMUNICATION COMPETITION</h3>
+            <p>Arduino-based IoT project development as a final year project</p>
+            <div class="project-tech">
+                <span>Arduino</span>
+                <span>IoT</span>
+                <span>Hardware</span>
+                <span>IoT Programming</span>
+            </div>
+        </div>
+    </div>
+    <div class="project-card">
+        <div class="project-image">
+            <img src="logoaws.png" alt="AWS DeepRacer Achievement" style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px 15px 0 0; background: rgba(45, 45, 45, 0.8);">
+        </div>
+        <div class="project-info">
+            <h3>AWS DeepRacer Achievement</h3>
+            <p>Machine Learning and Autonomous Racing Competition</p>
+            <div class="project-tech">
+                <span>AWS</span>
+                <span>Machine Learning</span>
+                <span>Python</span>
+                <span>Artificial Intelligence (AI)</span>
+            </div>
+        </div>
+    </div>
+    <div class="project-card">
+        <div class="project-image">
+            <img src="logowsmb.png" alt="PRA-WORLDSKILL 2022 (WEB DESIGN TECHNOLOGY)" style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px 15px 0 0; background: rgba(45, 45, 45, 0.8);">
+        </div>
+        <div class="project-info">
+            <h3>PRA-WORLDSKILL 2022 (WEB DESIGN TECHNOLOGY)</h3>
+            <p>Skills competition for student under 21 years old across the country, the contestant have 6 weeks of training about the topic given and must memorize all the code.</p>
+            <div class="project-tech">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>PHP</span>
+            </div>
+        </div>
+    </div>
+    <div class="project-card">
+        <div class="project-image">
+            <img src="logopolyskill.png" alt="POLYSKILLS 2022 (IT NETWORK SYSTEM ADMINISTRATION)" style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px 15px 0 0; background: rgba(45, 45, 45, 0.8);">
+        </div>
+        <div class="project-info">
+            <h3>POLYSKILLS 2022 (IT NETWORK SYSTEM ADMINISTRATION)</h3>
+            <p>Skills competition for polytechnic students under 21 years old across the country. Advanced networking setup and administration</p>
+            <div class="project-tech">
+                <span>ITNSA</span>
+                <span>Cisco</span>
+                <span>Networking</span>
+                <span>Putty</span>
+            </div>
+        </div>
+    </div>
+    <div class="project-card">
+        <div class="project-image">
+            <img src="logoKOTH.jpeg" alt="King Of The Hill 2023" style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px 15px 0 0; background: rgba(45, 45, 45, 0.8);">
+        </div>
+        <div class="project-info">
+            <h3>King Of The Hill 2023</h3>
+            <p>A networking competition to keep tracing the IP from the main PC through the routers untill you are on top of the hill</p>
+            <div class="project-tech">
+                <span>Cisco</span>
+                <span>Networking</span>
+                <span>Routing</span>
+            </div>
+        </div>
+    </div>
+    <div class="project-card">
+        <div class="project-image">
+            <img src="logowsmb.png" alt="PRA-WORLDSKILL 2023 (IT NETWORK SYSTEM ADMINISTRATION)" style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px 15px 0 0; background: rgba(45, 45, 45, 0.8);">
+        </div>
+        <div class="project-info">
+            <h3>PRA-WORLDSKILL 2023 (IT NETWORK SYSTEM ADMINISTRATION)</h3>
+            <p>Skills competition for students under 21 years old who has qualified across the country. Advanced networking setup and administration</p>
+            <div class="project-tech">
+                <span>ITNSA</span>
+                <span>Cisco</span>
+                <span>Networking</span>
+                <span>Putty</span>
+            </div>
+        </div>
+    </div>
+    <div class="project-card">
+        <div class="project-image">
+            <img src="logoctf.jpeg" alt="Capture The Flag" style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px 15px 0 0; background: rgba(45, 45, 45, 0.8);">
+        </div>
+        <div class="project-info">
+            <h3>Capture The Flag 2023</h3>
+            <p>Linux server setup and the contestant must find all the flag using the tools in Kali Linux</p>
+            <div class="project-tech">
+                <span>Linux</span>
+                <span>Server</span>
+                <span>Administration</span>
+                <span>Reverse Engineering</span>
+                <span>SQL injection</span>
+                <span>Binary Exploitation</span>
+                <span>Cryptography</span>
+                <span>Forensics</span>
+                <span>Open-Source Intelligence (OSINT)</span>
+            </div>
+        </div>
+    </div>
+    <div class="project-card">
+        <div class="project-image">
+            <img src="logo icprom.png" alt="INTERNATIONAL C PROGRAMMING COMPETITION 2023 (iC-PROM)" style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px 15px 0 0; background: rgba(45, 45, 45, 0.8);">
+        </div>
+        <div class="project-info">
+            <h3>INTERNATIONAL C PROGRAMMING COMPETITION 2023 (iC-PROM)</h3>
+            <p>C programming competition, contestant got 8 hours to complete all the task</p>
+            <div class="project-tech">
+                <span>C</span>
+                <span>C++</span>
+                <span>Programming</span>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Ready ?</h3>
+                    <p>Let's accelerate your company to the finish line. Get in touch for collaboration opportunities. My area of interest is all the tags above!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>shalmihad.edc@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <span>+60 13-616 5130</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>Batu 5, Jalan Santan, Padang Lati, 02450 Kangar, Perlis</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" action="https://formspree.io/f/mqabybyv" method="POST">
+                    <div class ="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class ="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class ="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <div class ="form-group">
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Racing Portfolio. Built for speed and performance.</p>
+                <div class="social-links">
+                    <a href="www.linkedin.com/in/shalmihad-sahadi-9a9251371" class="social-link">LinkedIn</a>
+                    <a href="https://github.com/ShxwL" class="social-link">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

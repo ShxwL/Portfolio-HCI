@@ -1,0 +1,955 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-red: #dc143c;
+  --racing-black: #1a1a1a;
+  --silver: #c0c0c0;
+  --white: #ffffff;
+  --yellow: #ffd700;
+  --dark-gray: #2d2d2d;
+  --light-gray: #f5f5f5;
+  --track-gray: #4a4a4a;
+  --track-white: #ffffff;
+  --grass-green: #2d5016;
+}
+
+/* Video Background */
+#ferrari-bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -10;
+}
+
+/* Dark overlay for better text readability */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -5;
+  pointer-events: none;
+}
+
+body {
+  font-family: "Rajdhani", sans-serif;
+  background: transparent;
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Racing Track Background - DISABLED */
+.racing-track {
+  display: none;
+}
+
+
+
+/* Waving Checkered Flag */
+.checkered-flag-container {
+  position: fixed;
+  top: 10%;
+  right: 5%;
+  width: 120px;
+  height: 80px;
+  z-index: -1;
+  animation: flagFloat 6s ease-in-out infinite;
+}
+
+@keyframes flagFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+/* Flag pole */
+.flag-pole {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100px;
+  background: linear-gradient(180deg, #8b4513 0%, #654321 100%);
+  border-radius: 2px;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Checkered flag */
+.checkered-flag {
+  position: absolute;
+  left: 4px;
+  top: 0;
+  width: 80px;
+  height: 60px;
+  background: repeating-conic-gradient(
+    from 0deg,
+    #000 0deg 90deg,
+    #fff 90deg 180deg,
+    #000 180deg 270deg,
+    #fff 270deg 360deg
+  );
+  background-size: 20px 20px;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  animation: flagWave 2s ease-in-out infinite;
+  transform-origin: left center;
+}
+
+@keyframes flagWave {
+  0%,
+  100% {
+    transform: rotateY(0deg) rotateX(0deg);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  }
+  25% {
+    transform: rotateY(-15deg) rotateX(5deg);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    transform: rotateY(0deg) rotateX(-3deg);
+    box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.4);
+  }
+  75% {
+    transform: rotateY(15deg) rotateX(5deg);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Add wave effect to flag sections */
+.checkered-flag::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    #000 0deg 90deg,
+    #fff 90deg 180deg,
+    #000 180deg 270deg,
+    #fff 270deg 360deg
+  );
+  background-size: 20px 20px;
+  border-radius: 0 4px 4px 0;
+  animation: flagRipple 3s ease-in-out infinite;
+  transform-origin: left center;
+}
+
+@keyframes flagRipple {
+  0%,
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  33% {
+    clip-path: polygon(0 0, 100% 5%, 95% 100%, 0 95%);
+  }
+  66% {
+    clip-path: polygon(0 5%, 100% 0, 100% 95%, 5% 100%);
+  }
+}
+
+/* Add a second smaller flag for depth */
+.checkered-flag-small {
+  position: fixed;
+  top: 70%;
+  left: 8%;
+  width: 60px;
+  height: 40px;
+  z-index: -1;
+  animation: smallFlagFloat 8s ease-in-out infinite reverse;
+}
+
+.checkered-flag-small .flag-pole {
+  width: 3px;
+  height: 60px;
+}
+
+.checkered-flag-small .checkered-flag {
+  width: 50px;
+  height: 35px;
+  background-size: 12.5px 12.5px;
+  animation: flagWave 2.5s ease-in-out infinite;
+}
+
+@keyframes smallFlagFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(-2deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-15px) rotate(1deg);
+    opacity: 0.9;
+  }
+}
+
+/* Racing finish line effect */
+.finish-line {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: repeating-linear-gradient(90deg, #000 0px, #000 20px, #fff 20px, #fff 40px);
+  z-index: -1;
+  
+}
+
+
+
+/* F1 Track Backgrounds for Each Section */
+
+/* Hero Section - Monaco Grand Prix Circuit */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* About Section - Silverstone Circuit */
+.about {
+  padding: 6rem 0;
+  background: transparent;
+}
+
+/* Skills Section - Spa-Francorchamps */
+.skills {
+  padding: 6rem 0;
+  background: transparent;
+}
+
+/* Projects Section - Suzuka Circuit */
+.projects {
+  padding: 6rem 0;
+  background: transparent;
+}
+
+/* Contact Section - Monza Circuit */
+.contact {
+  padding: 6rem 0;
+  background: transparent;
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--primary-red);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.nav-logo {
+  font-family: "Orbitron", monospace;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.logo-text {
+  color: var(--white);
+}
+
+.logo-accent {
+  color: var(--primary-red);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--primary-red);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-red);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: var(--white);
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.hero-content {
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.checkered-flag-hero {
+  width: 60px;
+  height: 40px;
+  background: repeating-conic-gradient(var(--white) 0deg 90deg, var(--racing-black) 90deg 180deg);
+  margin: 0 auto 2rem;
+  border-radius: 5px;
+  animation: flagWave 2s ease-in-out infinite;
+}
+
+.hero-title {
+  font-family: "Orbitron", monospace;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 0.9;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 30px rgba(220, 20, 60, 0.5);
+}
+
+.title-line-1 {
+  display: block;
+  color: var(--white);
+}
+
+.title-line-2 {
+  display: block;
+  color: var(--primary-red);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px var(--primary-red);
+  }
+  to {
+    text-shadow: 0 0 30px var(--primary-red), 0 0 40px var(--primary-red);
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--silver);
+  font-weight: 300;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.speed-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 100px,
+    rgba(255, 255, 255, 0.05) 100px,
+    rgba(255, 255, 255, 0.05) 102px
+  );
+  animation: speedLines 3s linear infinite;
+}
+
+@keyframes speedLines {
+  0% {
+    transform: translateX(-100px) translateY(-100px);
+  }
+  100% {
+    transform: translateX(100px) translateY(100px);
+  }
+}
+
+/* Buttons */
+.btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--primary-red);
+  color: var(--white);
+  box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
+}
+
+.btn-primary:hover {
+  background: #b91c3c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(220, 20, 60, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+  background: var(--white);
+  color: var(--racing-black);
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Titles */
+.section-title {
+  font-family: "Orbitron", monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--white);
+  position: relative;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--primary-red);
+  border-radius: 2px;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-text p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--silver);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-family: "Orbitron", monospace;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--primary-red);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--silver);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.driver-helmet {
+  width: 200px;
+  height: 200px;
+  background-image: url("Gambar web/gambar passport.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(220, 20, 60, 0.3);
+  border: 4px solid var(--primary-red);
+  overflow: hidden;
+}
+
+.driver-helmet::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(220, 20, 60, 0.1) 0%, transparent 50%);
+  border-radius: 50%;
+}
+
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.skill-card {
+  background: rgba(26, 26, 26, 0.85);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  backdrop-filter: blur(10px);
+}
+
+/* Skill Level Badges */
+.skill-level {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+.skill-level.proficient {
+  background: linear-gradient(135deg, var(--primary-red), #b91c3c);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(220, 20, 60, 0.3);
+}
+
+.skill-level.basic {
+  background: linear-gradient(135deg, var(--yellow), #e6c200);
+  color: var(--racing-black);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+/* Update skill card padding to accommodate badges */
+.skill-card {
+  background: rgba(45, 45, 45, 0.5);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid rgba(220, 20, 60, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-red);
+  box-shadow: 0 15px 30px rgba(220, 20, 60, 0.2);
+}
+
+.skill-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.skill-card h3 {
+  font-family: "Orbitron", monospace;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--white);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.skill-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-red), var(--yellow));
+  border-radius: 4px;
+  width: 0;
+  transition: width 2s ease;
+}
+
+.skill-card p {
+  color: var(--silver);
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Projects Section */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: rgba(26, 26, 26, 0.9);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.project-image {
+  height: 200px;
+  background: linear-gradient(135deg, var(--dark-gray), var(--racing-black));
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(220, 20, 60, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-info {
+  padding: 1.5rem;
+}
+
+.project-info h3 {
+  font-family: "Orbitron", monospace;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.project-info p {
+  color: var(--silver);
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.project-tech {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.project-tech span {
+  background: var(--primary-red);
+  color: var(--white);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Contact Section */
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-info h3 {
+  font-family: "Orbitron", monospace;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-red);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.contact-info p {
+  font-size: 1.1rem;
+  color: var(--silver);
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(45, 45, 45, 0.8);
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  border-radius: 10px;
+  color: var(--white);
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--silver);
+}
+
+/* Footer */
+.footer {
+  background: var(--racing-black);
+  padding: 2rem 0;
+  border-top: 2px solid var(--primary-red);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  color: var(--silver);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: var(--primary-red);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    flex-direction: column;
+    background-color: rgba(26, 26, 26, 0.98);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    padding: 2rem 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .stats {
+    justify-content: center;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .checkered-flag-container {
+    width: 80px;
+    height: 60px;
+    right: 2%;
+  }
+
+  .checkered-flag-small {
+    width: 40px;
+    height: 30px;
+    left: 2%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scroll animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
